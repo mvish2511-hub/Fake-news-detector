@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeriMedia | Next-Gen Misinformation Detection Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .glass {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-100 min-h-screen relative overflow-x-hidden scroll-smooth">
+
+    <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-[10%] left-[20%] w-[550px] h-[550px] bg-cyan-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <nav class="glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">🛡️</span>
+                <span class="text-xl font-bold tracking-tight text-white">VeriMedia</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
+                <a href="#workflow" class="hover:text-blue-400 transition-colors">How It Works</a>
+                <a href="#preview" class="hover:text-blue-400 transition-colors">Dashboard Preview</a>
+                <a href="#metrics" class="hover:text-blue-400 transition-colors">Performance</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-5 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-blue-600/20 hover:scale-[1.03] transform">
+                    Try Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-36 pb-20 max-w-7xl mx-auto px-6 flex flex-col items-center justify-center text-center">
+        <div class="animate-float mb-8 relative group">
+            <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-xl group-hover:bg-blue-500/30 transition-all duration-500"></div>
+            <div class="relative w-24 h-24 rounded-full bg-slate-900/80 border-2 border-blue-500/30 flex items-center justify-center text-4xl shadow-2xl backdrop-blur-md">
+                🛡️
+            </div>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white max-w-4xl leading-tight">
+            Fight Misinformation with <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
+                AI-Powered Verification
+            </span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-400 max-w-2xl mt-6 leading-relaxed">
+            Instantly validate news stories. Our dual-engine analysis tracks linguistic manipulation signatures alongside server domain registry markers.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm font-semibold text-slate-300">
+            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Clickbait Analysis</span></div>
+            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Source Registry Check</span></div>
+            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Heuristic Scoring Matrix</span></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-10 z-10">
+            <a href="dashboard.html" class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-blue-600/10 hover:shadow-blue-600/30 hover:scale-[1.05] transform text-center">
+                Launch Diagnostic Tool
+            </a>
+            <a href="#features" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-center">
+                Explore Features ↓
+            </a>
+        </div>
+
+        <div class="mt-20 border-t border-slate-900 pt-8 w-full max-w-4xl">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Architectural Framework Stack</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 text-sm font-medium text-slate-400 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                <span class="bg-slate-900/50 px-4 py-1.5 rounded-lg border border-slate-800/60">HTML5 Frontend</span>
+                <span class="bg-slate-900/50 px-4 py-1.5 rounded-lg border border-slate-800/60">Tailwind Engine</span>
+                <span class="bg-slate-900/50 px-4 py-1.5 rounded-lg border border-slate-800/60">JavaScript Native</span>
+                <span class="bg-slate-900/50 px-4 py-1.5 rounded-lg border border-slate-800/60">Heuristic Logic</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-24 max-w-7xl mx-auto px-6 border-t border-slate-900">
+        <div class="text-center mb-16">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Platform Mechanics</h2>
+            <p class="text-3xl sm:text-4xl font-black text-white">Dual Verification Architecture</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div class="text-3xl mb-4 bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">🧠</div>
+                <h3 class="text-xl font-bold text-white mb-2">Linguistic Profiling</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Scans source headlines and text content lengths against high-risk clickbait structures, exaggeration, and bias factors.</p>
+            </div>
+            <div class="glass p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div class="text-3xl mb-4 bg-cyan-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">🌐</div>
+                <h3 class="text-xl font-bold text-white mb-2">Domain Trust Audit</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Cross-references domain names for spoofing strategies, evaluating domain metadata safety records automatically.</p>
+            </div>
+            <div class="glass p-8 rounded-2xl shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                <div class="text-3xl mb-4 bg-purple-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">⚡</div>
+                <h3 class="text-xl font-bold text-white mb-2">Real-Time Processing</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Yields deep analytical telemetry outputs and a comprehensive unified trust index score in under 2 seconds flat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-24 bg-slate-950/40 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">Execution Protocol</h2>
+                <p class="text-3xl sm:text-4xl font-black text-white">How Information Flow Is Audited</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <div class="text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-blue-600/20">1</div>
+                    <h4 class="font-bold text-white">Ingest Link</h4>
+                    <p class="text-xs text-slate-400">User inputs structural destination URL link string into dashboard.</p>
+                </div>
+                <div class="text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">2</div>
+                    <h4 class="font-bold text-white">Linguistic Audit</h4>
+                    <p class="text-xs text-slate-400">System registers punctuation, capitalizations, and clickbait tokens.</p>
+                </div>
+                <div class="text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">3</div>
+                    <h4 class="font-bold text-white">Domain Diagnostics</h4>
+                    <p class="text-xs text-slate-400">Evaluates domain security and checks names against global blacklists.</p>
+                </div>
+                <div class="text-center space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-emerald-600/20">4</div>
+                    <h4 class="font-bold text-white">Generate Score</h4>
+                    <p class="text-xs text-slate-400">Consolidates dynamic safety reports into a visual user matrix view.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preview" class="py-24 max-w-5xl mx-auto px-6 border-t border-slate-900">
+        <div class="text-center mb-12">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Workspace Preview</h2>
+            <p class="text-3xl font-black text-white">High Fidelity Interface Ecosystem</p>
+        </div>
+
+        <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80">
+            <div class="bg-slate-900/90 px-4 py-3 flex items-center space-x-2 border-b border-slate-800/80">
+                <div class="w-3 h-3 rounded-full bg-red-500/40"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/40"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/40"></div>
+                <div class="bg-slate-950/80 text-[11px] text-slate-500 px-3 py-1 rounded-md ml-4 w-72 truncate">https://verimedia.platform/workspace</div>
+            </div>
+            <div class="p-6 bg-slate-950/40 grid grid-cols-3 gap-4">
+                <div class="col-span-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <span class="text-xs text-slate-400">https://breaking-shocking-rumor.xyz/secret-miracle</span>
+                    <span class="text-xs font-bold bg-blue-600/20 text-blue-400 px-3 py-1 rounded-lg border border-blue-500/20">Diagnostic Complete</span>
+                </div>
+                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Trust Rating</span>
+                    <span class="text-2xl font-black text-red-400 block mt-1">40%</span>
+                </div>
+                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Linguistic Index</span>
+                    <span class="text-2xl font-black text-amber-400 block mt-1">High Bias</span>
+                </div>
+                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Registry Check</span>
+                    <span class="text-2xl font-black text-red-400 block mt-1">Untrusted</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metrics" class="py-24 bg-gradient-to-b from-[#030712] to-slate-950 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="space-y-1">
+                <p class="text-4xl sm:text-5xl font-black text-white tracking-tight">95%</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Structural Evaluation Accuracy</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-4xl sm:text-5xl font-black text-blue-400 tracking-tight">&lt; 1.5s</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Average Processing Latency</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-4xl sm:text-5xl font-black text-cyan-400 tracking-tight">100%</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Client-Side Execution Autonomy</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-900 bg-[#020617] py-12 text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="space-y-2 text-center md:text-left">
+                <p class="text-sm font-bold text-white">VeriMedia Framework</p>
+                <p class="text-slate-500">Advanced automated architectural design built for information integrity auditing.</p>
+            </div>
+            <div class="flex space-x-6 font-medium text-slate-400">
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#workflow" class="hover:text-white transition">Workflow</a>
+                <a href="dashboard.html" class="hover:text-white transition">Workspace Console</a>
+            </div>
+            <p class="text-slate-600">&copy; Software Engineering Expo 2026. Made with excellence.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

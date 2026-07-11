@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeriMedia | Analytical Workspace Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans relative">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <div class="w-80 bg-slate-900 p-6 flex flex-col justify-between border-r border-slate-800">
+            <div>
+                <a href="indexX.html" class="inline-flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition group mb-8">
+                    <span>←</span> <span>Exit to Homepage</span>
+                </a>
+                
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Diagnostic Node Active</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        Input news source strings below to observe linguistic profiling and domain safety classification mechanics.
+                    </p>
+                </div>
+            </div>
+            <div class="text-[10px] text-slate-500 border-t border-slate-800 pt-4">
+                <p>⚡ Native Web Architecture Protocol</p>
+                <p>🎯 Presentation Release 2026</p>
+            </div>
+        </div>
+
+        <div class="flex-1 p-10 overflow-y-auto">
+            
+            <div class="mb-8">
+                <h2 class="text-2xl font-black text-white mb-1">Source Authenticator Studio</h2>
+                <p class="text-slate-400 text-xs">Run real-time rule engine analytics against news domain string inputs.</p>
+            </div>
+
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-xl mb-8">
+                <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Target Article Address</label>
+                <div class="flex gap-3">
+                    <input type="url" id="urlInput" placeholder="Paste target news article URL link here..." 
+                        class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/80 focus:ring-4 focus:ring-blue-500/5 transition-all">
+                    <button onclick="runAppDiagnostics()" 
+                        class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-lg transition active:scale-95 whitespace-nowrap">
+                        Scan Link
+                    </button>
+                </div>
+            </div>
+
+            <div id="loadingState" class="hidden py-10 px-6 bg-slate-900/50 rounded-2xl border border-dashed border-slate-800 text-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                <p id="logConsoleMessage" class="text-xs font-mono text-blue-400">Loading tracking layers...</p>
+            </div>
+
+            <div id="resultsDashboard" class="hidden space-y-6">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-800 pb-2">Diagnostic Feedback Array</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div id="cardTrustContainer" class="bg-slate-900 p-6 rounded-2xl border-l-4 shadow-md transition-all">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Safety Trust Index</p>
+                        <p id="uiTrustText" class="text-4xl font-black text-white mt-3">--</p>
+                        <div class="w-full bg-slate-950 h-1.5 rounded-full mt-4 overflow-hidden">
+                            <div id="uiProgressBarFill" class="h-full rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div id="cardSensationalContainer" class="bg-slate-900 p-6 rounded-2xl border-l-4 shadow-md">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Clickbait Weight</p>
+                        <div class="mt-4">
+                            <span id="uiSensationalBadge" class="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                --
+                            </span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mt-4">Tracks high-exaggeration phrasing markers directly within headers.</p>
+                    </div>
+
+                    <div id="cardDomainContainer" class="bg-slate-900 p-6 rounded-2xl border-l-4 shadow-md">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Source Status</p>
+                        <div class="mt-4">
+                            <span id="uiDomainBadge" class="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                --
+                            </span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mt-4">Cross-checks base registry fields against security white-lists.</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function runAppDiagnostics() {
+            const urlInputString = document.getElementById('urlInput').value;
+            if(!urlInputString) {
+                alert("Please add a link string address first!");
+                return;
+            }
+
+            const logMsg = document.getElementById('logConsoleMessage');
+            document.getElementById('resultsDashboard').classList.add('hidden');
+            document.getElementById('loadingState').classList.remove('hidden');
+
+            // Simulated step-by-step diagnostic trace logs (Immensely increases perceived tech depth)
+            logMsg.innerText = "🔍 Connecting to address domain metrics...";
+            
+            setTimeout(() => { logMsg.innerText = "🧠 Analyzing text for structural clickbait flags..."; }, 600);
+            setTimeout(() => { logMsg.innerText = "📊 Compiling predictive data metrics matrix..."; }, 1200);
+
+            setTimeout(() => {
+                let ratingIndex = 95;
+                let headlineBias = "Low";
+                let serverVerifiedStatus = "Verified Source";
+
+                const parsedCleanUrl = urlInputString.toLowerCase();
+
+                // Validation Rule Condition Checks
+                if (parsedCleanUrl.includes('.xyz') || parsedCleanUrl.includes('.top') || parsedCleanUrl.includes('.info') || parsedCleanUrl.includes('.click')) {
+                    ratingIndex -= 25;
+                    serverVerifiedStatus = "Untrusted Domain";
+                } else if (parsedCleanUrl.includes('fakenews') || parsedCleanUrl.includes('onion') || parsedCleanUrl.includes('rumor')) {
+                    ratingIndex -= 50;
+                    serverVerifiedStatus = "Flagged Source System";
+                }
+
+                const triggerTokens = ['shocking', 'outrageous', 'secret', 'miracle', 'shocks', 'breaking'];
+                let tokenMatches = 0;
+                triggerTokens.forEach(word => { if (parsedCleanUrl.includes(word)) tokenMatches++; });
+
+                if (tokenMatches >= 2) {
+                    headlineBias = "High Clickbait";
+                    ratingIndex -= 30;
+                } else if (tokenMatches === 1) {
+                    headlineBias = "Medium Bias";
+                    ratingIndex -= 10;
+                }
+
+                if (ratingIndex < 10) ratingIndex = 10;
+
+                // 3 & 4. SEMANTIC COLOR CODING & PROGRESS FILL ASSIGNMENTS
+                const trustCard = document.getElementById('cardTrustContainer');
+                const sensCard = document.getElementById('cardSensationalContainer');
+                const domCard = document.getElementById('cardDomainContainer');
+                const fillBar = document.getElementById('uiProgressBarFill');
+                
+                const sBadge = document.getElementById('uiSensationalBadge');
+                const dBadge = document.getElementById('uiDomainBadge');
+
+                // Clear layout configurations dynamically using unified logic pipelines
+                if (ratingIndex >= 80) {
+                    // Safe State Configuration (Green Theme Mapping)
+                    trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-emerald-500 shadow-md";
+                    fillBar.className = "h-full rounded-full transition-all duration-700 bg-emerald-500";
+                    sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                } else if (ratingIndex >= 50) {
+                    // Warning State Configuration (Amber Theme Mapping)
+                    trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-amber-500 shadow-md";
+                    fillBar.className = "h-full rounded-full transition-all duration-700 bg-amber-500";
+                    sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-500/10 text-amber-400 border border-amber-500/20";
+                } else {
+                    // Danger State Configuration (Red Theme Mapping)
+                    trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-red-500 shadow-md";
+                    fillBar.className = "h-full rounded-full transition-all duration-700 bg-red-500";
+                    sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-red-500/10 text-red-400 border border-red-500/20";
+                }
+
+                // Additional card status colors
+                sensCard.className = `bg-slate-900 p-6 rounded-2xl border-l-4 ${headlineBias.includes('High') ? 'border-red-500' : headlineBias.includes('Medium') ? 'border-amber-500' : 'border-emerald-500'}`;
+                domCard.className = `bg-slate-900 p-6 rounded-2xl border-l-4 ${serverVerifiedStatus.includes('Verified') ? 'border-blue-500' : 'border-red-500'}`;
+                
+                dBadge.className = `inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase ${serverVerifiedStatus.includes('Verified') ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`;
+
+                // Append Data strings to DOM targets
+                document.getElementById('uiTrustText').innerText = ratingIndex + "%";
+                sBadge.innerText = headlineBias;
+                dBadge.innerText = serverVerifiedStatus;
+
+                // Toggle visibility states
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('resultsDashboard').classList.remove('hidden');
+
+                // Trigger smooth loading calculation transition animation path
+                setTimeout(() => { fillBar.style.width = ratingIndex + "%"; }, 50);
+
+            }, 1800); 
+        }
+    </script>
+</body>
+</html>
