@@ -35,19 +35,16 @@
                 <span class="text-2xl">🛡️</span>
                 <span class="text-xl font-bold tracking-tight text-white">VeriMedia</span>
             </div>
-            
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                 <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
                 <a href="#workflow" class="hover:text-blue-400 transition-colors">How It Works</a>
                 <a href="#preview" class="hover:text-blue-400 transition-colors">Dashboard Preview</a>
                 <a href="#metrics" class="hover:text-blue-400 transition-colors">Performance</a>
             </div>
-
             <div class="flex items-center space-x-3">
                 <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-blue-600/20 hover:scale-[1.03] transform whitespace-nowrap">
                     Try Now
                 </a>
-                
                 <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white p-2 focus:outline-none">
                     <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -101,10 +98,10 @@
         <div class="mt-16 sm:mt-20 border-t border-slate-900 pt-8 w-full max-w-4xl px-2">
             <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Architectural Framework Stack</p>
             <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs sm:text-sm font-medium text-slate-400 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                <span class="bg-slate-900/50 px-3 sm:bg-slate-900/50 sm:px-4 py-1.5 rounded-lg border border-slate-800/60">HTML5 Frontend</span>
-                <span class="bg-slate-900/50 px-3 sm:bg-slate-900/50 sm:px-4 py-1.5 rounded-lg border border-slate-800/60">Tailwind Engine</span>
-                <span class="bg-slate-900/50 px-3 sm:bg-slate-900/50 sm:px-4 py-1.5 rounded-lg border border-slate-800/60">JavaScript Native</span>
-                <span class="bg-slate-900/50 px-3 sm:bg-slate-900/50 sm:px-4 py-1.5 rounded-lg border border-slate-800/60">Heuristic Logic</span>
+                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">HTML5 Frontend</span>
+                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Tailwind Engine</span>
+                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">JavaScript Native</span>
+                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Heuristic Logic</span>
             </div>
         </div>
     </section>
@@ -183,6 +180,7 @@
                     https://verimedia.platform/workspace
                 </div>
             </div>
+            
             <div class="p-4 sm:p-6 bg-slate-950/40 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="col-span-1 sm:col-span-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
                     <span class="text-[11px] sm:text-xs text-slate-400 break-all">https://breaking-shocking-rumor.xyz/secret-miracle</span>
@@ -237,7 +235,6 @@
     </footer>
 
     <script>
-        // Responsive Utilities for Mobile Navbar Visibility State Checks
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('menuIcon');
