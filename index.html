@@ -32,34 +32,36 @@
         <div class="absolute bottom-[10%] left-[10%] w-[275px] sm:w-[550px] h-[275px] sm:h-[550px] bg-cyan-600/5 rounded-full blur-[80px] sm:blur-[140px] pointer-events-none z-0"></div>
 
         <nav class="glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between relative z-50">
                 <div class="flex items-center space-x-3">
                     <span class="text-2xl">🛡️</span>
                     <span class="text-xl font-bold tracking-tight text-white">VeriMedia</span>
                 </div>
+                
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                     <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
                     <a href="#workflow" class="hover:text-blue-400 transition-colors">How It Works</a>
                     <a href="#preview" class="hover:text-blue-400 transition-colors">Dashboard Preview</a>
                     <a href="#metrics" class="hover:text-blue-400 transition-colors">Performance</a>
                 </div>
+                
                 <div class="flex items-center space-x-3">
                     <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-blue-600/20 hover:scale-[1.03] transform whitespace-nowrap">
                         Try Now
                     </a>
-                    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white p-2 focus:outline-none z-50">
-                        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button onclick="toggleMobileMenu()" type="button" aria-label="Toggle Menu" class="md:hidden text-slate-400 hover:text-white p-3 -mr-3 focus:outline-none">
+                        <svg id="menuIcon" class="w-6 h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-[#030712]/95 backdrop-blur-lg px-6 py-4 space-y-4 text-sm font-medium text-slate-300">
-                <a href="#features" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Features</a>
-                <a href="#workflow" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">How It Works</a>
-                <a href="#preview" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Dashboard Preview</a>
-                <a href="#metrics" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Performance</a>
+            <div id="mobileMenu" class="hidden md:hidden absolute top-20 left-0 w-full border-b border-slate-800 bg-[#030712]/98 backdrop-blur-xl px-6 py-6 space-y-4 text-sm font-medium text-slate-300 shadow-2xl z-40">
+                <a href="#features" onclick="closeMobileMenu()" class="block hover:text-blue-400 transition-colors py-2 border-b border-slate-900/50">Features</a>
+                <a href="#workflow" onclick="closeMobileMenu()" class="block hover:text-blue-400 transition-colors py-2 border-b border-slate-900/50">How It Works</a>
+                <a href="#preview" onclick="closeMobileMenu()" class="block hover:text-blue-400 transition-colors py-2 border-b border-slate-900/50">Dashboard Preview</a>
+                <a href="#metrics" onclick="closeMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Performance</a>
             </div>
         </nav>
 
@@ -241,4 +243,24 @@
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('
+            const icon = document.getElementById('menuIcon');
+            const isOpen = !menu.classList.contains('hidden');
+
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                menu.classList.remove('hidden');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.add('hidden');
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+        }
+    </script>
+
+</body>
+</html>
