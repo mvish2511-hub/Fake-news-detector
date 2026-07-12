@@ -23,232 +23,222 @@
         }
     </style>
 </head>
-<body class="bg-[#030712] text-slate-100 min-h-screen relative overflow-x-hidden scroll-smooth">
+<body class="bg-[#030712] text-slate-100 min-h-screen">
 
-    <div class="absolute top-[-10%] left-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-blue-600/10 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none"></div>
-    <div class="absolute top-[30%] right-[-10%] w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-600/10 rounded-full blur-[90px] sm:blur-[130px] pointer-events-none"></div>
-    <div class="absolute bottom-[10%] left-[20%] w-[275px] sm:w-[550px] h-[275px] sm:h-[550px] bg-cyan-600/5 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none"></div>
+    <div class="min-h-screen w-full overflow-x-hidden relative flex flex-col justify-between">
+        
+        <div class="absolute top-[-5%] left-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-blue-600/10 rounded-full blur-[80px] sm:blur-[150px] pointer-events-none z-0"></div>
+        <div class="absolute top-[30%] right-[-10%] w-[250px] sm:w-[500px] h-[250px] sm:h-[500px] bg-purple-600/10 rounded-full blur-[80px] sm:blur-[130px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-[10%] left-[10%] w-[275px] sm:w-[550px] h-[275px] sm:h-[550px] bg-cyan-600/5 rounded-full blur-[80px] sm:blur-[140px] pointer-events-none z-0"></div>
 
-    <nav class="glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <span class="text-2xl">🛡️</span>
-                <span class="text-xl font-bold tracking-tight text-white">VeriMedia</span>
+        <nav class="glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🛡️</span>
+                    <span class="text-xl font-bold tracking-tight text-white">VeriMedia</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
+                    <a href="#workflow" class="hover:text-blue-400 transition-colors">How It Works</a>
+                    <a href="#preview" class="hover:text-blue-400 transition-colors">Dashboard Preview</a>
+                    <a href="#metrics" class="hover:text-blue-400 transition-colors">Performance</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-blue-600/20 hover:scale-[1.03] transform whitespace-nowrap">
+                        Try Now
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white p-2 focus:outline-none z-50">
+                        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-blue-400 transition-colors">Features</a>
-                <a href="#workflow" class="hover:text-blue-400 transition-colors">How It Works</a>
-                <a href="#preview" class="hover:text-blue-400 transition-colors">Dashboard Preview</a>
-                <a href="#metrics" class="hover:text-blue-400 transition-colors">Performance</a>
+
+            <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-[#030712]/95 backdrop-blur-lg px-6 py-4 space-y-4 text-sm font-medium text-slate-300">
+                <a href="#features" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Features</a>
+                <a href="#workflow" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">How It Works</a>
+                <a href="#preview" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Dashboard Preview</a>
+                <a href="#metrics" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Performance</a>
             </div>
-            <div class="flex items-center space-x-3">
-                <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 sm:px-5 py-2.5 rounded-xl transition duration-200 shadow-lg shadow-blue-600/20 hover:scale-[1.03] transform whitespace-nowrap">
-                    Try Now
+        </nav>
+
+        <section class="relative pt-32 sm:pt-40 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center z-10">
+            <div class="animate-float mb-6 sm:mb-8 relative group">
+                <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-xl group-hover:bg-blue-500/30 transition-all duration-500"></div>
+                <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-slate-900/80 border-2 border-blue-500/30 flex items-center justify-center text-3xl sm:text-4xl shadow-2xl backdrop-blur-md">
+                    🛡️
+                </div>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white max-w-4xl leading-tight px-2">
+                Fight Misinformation with <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
+                    AI-Powered Verification
+                </span>
+            </h1>
+
+            <p class="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mt-4 sm:mt-6 leading-relaxed px-2">
+                Instantly validate news stories. Our dual-engine analysis tracks linguistic manipulation signatures alongside server domain registry markers.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8 text-xs sm:text-sm font-semibold text-slate-300 max-w-3xl px-2">
+                <div class="flex items-center space-x-2 bg-slate-900/40 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Clickbait Analysis</span></div>
+                <div class="flex items-center space-x-2 bg-slate-900/40 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Source Registry Check</span></div>
+                <div class="flex items-center space-x-2 bg-slate-900/40 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Heuristic Scoring Matrix</span></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-10 z-10 w-full sm:w-auto px-4 sm:px-0 max-w-xs sm:max-w-none">
+                <a href="dashboard.html" class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-blue-600/10 hover:shadow-blue-600/30 hover:scale-[1.05] transform text-center text-sm">
+                    Launch Diagnostic Tool
                 </a>
-                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-white p-2 focus:outline-none">
-                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <a href="#features" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-center text-sm">
+                    Explore Features ↓
+                </a>
             </div>
-        </div>
 
-        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-[#030712]/95 backdrop-blur-lg px-6 py-4 space-y-4 text-sm font-medium text-slate-300">
-            <a href="#features" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Features</a>
-            <a href="#workflow" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">How It Works</a>
-            <a href="#preview" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Dashboard Preview</a>
-            <a href="#metrics" onclick="toggleMobileMenu()" class="block hover:text-blue-400 transition-colors py-2">Performance</a>
-        </div>
-    </nav>
-
-    <section class="relative pt-32 sm:pt-40 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-center text-center">
-        <div class="animate-float mb-6 sm:mb-8 relative group">
-            <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-xl group-hover:bg-blue-500/30 transition-all duration-500"></div>
-            <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-slate-900/80 border-2 border-blue-500/30 flex items-center justify-center text-3xl sm:text-4xl shadow-2xl backdrop-blur-md">
-                🛡️
+            <div class="mt-16 sm:mt-20 border-t border-slate-900 pt-8 w-full max-w-4xl px-2">
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Architectural Framework Stack</p>
+                <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-8 text-xs sm:text-sm font-medium text-slate-400 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">HTML5 Frontend</span>
+                    <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Tailwind Engine</span>
+                    <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">JavaScript Native</span>
+                    <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Heuristic Logic</span>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white max-w-4xl leading-tight px-2">
-            Fight Misinformation with <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
-                AI-Powered Verification
-            </span>
-        </h1>
-
-        <p class="text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mt-4 sm:mt-6 leading-relaxed px-2">
-            Instantly validate news stories. Our dual-engine analysis tracks linguistic manipulation signatures alongside server domain registry markers.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-8 text-xs sm:text-sm font-semibold text-slate-300 max-w-3xl px-2">
-            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Clickbait Analysis</span></div>
-            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Source Registry Check</span></div>
-            <div class="flex items-center space-x-2 bg-slate-900/40 px-4 py-2 rounded-full border border-slate-800"><span class="text-emerald-400">✓</span> <span>Heuristic Scoring Matrix</span></div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-4 mt-10 z-10 w-full sm:w-auto px-6 sm:px-0">
-            <a href="dashboard.html" class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-blue-600/10 hover:shadow-blue-600/30 hover:scale-[1.05] transform text-center text-sm">
-                Launch Diagnostic Tool
-            </a>
-            <a href="#features" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-center text-sm">
-                Explore Features ↓
-            </a>
-        </div>
-
-        <div class="mt-16 sm:mt-20 border-t border-slate-900 pt-8 w-full max-w-4xl px-2">
-            <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Architectural Framework Stack</p>
-            <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs sm:text-sm font-medium text-slate-400 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
-                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">HTML5 Frontend</span>
-                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Tailwind Engine</span>
-                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">JavaScript Native</span>
-                <span class="bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-800/60">Heuristic Logic</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 border-t border-slate-900">
-        <div class="text-center mb-12 sm:mb-16">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Platform Mechanics</h2>
-            <p class="text-2xl sm:text-4xl font-black text-white">Dual Verification Architecture</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
-                <div class="text-3xl mb-4 bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">🧠</div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Linguistic Profiling</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Scans source headlines and text content lengths against high-risk clickbait structures, exaggeration, and bias factors.</p>
-            </div>
-            <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
-                <div class="text-3xl mb-4 bg-cyan-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">🌐</div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Domain Trust Audit</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Cross-references domain names for spoofing strategies, evaluating domain metadata safety records automatically.</p>
-            </div>
-            <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
-                <div class="text-3xl mb-4 bg-purple-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">⚡</div>
-                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Real-Time Processing</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Yields deep analytical telemetry outputs and a comprehensive unified trust index score in under 2 seconds flat.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="workflow" class="py-20 sm:py-24 bg-slate-950/40 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <section id="features" class="py-20 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 border-t border-slate-900 w-full z-10">
             <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">Execution Protocol</h2>
-                <p class="text-2xl sm:text-4xl font-black text-white">How Information Flow Is Audited</p>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Platform Mechanics</h2>
+                <p class="text-2xl sm:text-4xl font-black text-white">Dual Verification Architecture</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-6 relative">
-                <div class="text-center space-y-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-blue-600/20">1</div>
-                    <h4 class="font-bold text-white text-sm sm:text-base">Ingest Link</h4>
-                    <p class="text-xs text-slate-400 px-4 sm:px-0">User inputs structural destination URL link string into dashboard.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="text-3xl mb-4 bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">🧠</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Linguistic Profiling</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Scans source headlines and text content lengths against high-risk clickbait structures, exaggeration, and bias factors.</p>
                 </div>
-                <div class="text-center space-y-3">
-                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">2</div>
-                    <h4 class="font-bold text-white text-sm sm:text-base">Linguistic Audit</h4>
-                    <p class="text-xs text-slate-400 px-4 sm:px-0">System registers punctuation, capitalizations, and clickbait tokens.</p>
+                <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="text-3xl mb-4 bg-cyan-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">🌐</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Domain Trust Audit</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Cross-references domain names for spoofing strategies, evaluating domain metadata safety records automatically.</p>
                 </div>
-                <div class="text-center space-y-3">
-                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">3</div>
-                    <h4 class="font-bold text-white text-sm sm:text-base">Domain Diagnostics</h4>
-                    <p class="text-xs text-slate-400 px-4 sm:px-0">Evaluates domain security and checks names against global blacklists.</p>
-                </div>
-                <div class="text-center space-y-3">
-                    <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-emerald-600/20">4</div>
-                    <h4 class="font-bold text-white text-sm sm:text-base">Generate Score</h4>
-                    <p class="text-xs text-slate-400 px-4 sm:px-0">Consolidates dynamic safety reports into a visual user matrix view.</p>
+                <div class="glass p-6 sm:p-8 rounded-2xl shadow-xl md:hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="text-3xl mb-4 bg-purple-500/10 w-12 h-12 rounded-xl flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">⚡</div>
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Real-Time Processing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Yields deep analytical telemetry outputs and a comprehensive unified trust index score in under 2 seconds flat.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="preview" class="py-20 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-slate-900">
-        <div class="text-center mb-10 sm:mb-12">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Workspace Preview</h2>
-            <p class="text-2xl sm:text-3xl font-black text-white">High Fidelity Interface Ecosystem</p>
-        </div>
+        <section id="workflow" class="py-20 sm:py-24 bg-slate-950/40 border-t border-slate-900 w-full z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-2">Execution Protocol</h2>
+                    <p class="text-2xl sm:text-4xl font-black text-white">How Information Flow Is Audited</p>
+                </div>
 
-        <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80">
-            <div class="bg-slate-900/90 px-4 py-3 flex items-center space-x-2 border-b border-slate-800/80 overflow-hidden">
-                <div class="flex space-x-1.5 shrink-0">
-                    <div class="w-3 h-3 rounded-full bg-red-500/40"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500/40"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500/40"></div>
-                </div>
-                <div class="bg-slate-950/80 text-[10px] sm:text-[11px] text-slate-500 px-3 py-1 rounded-md ml-4 flex-1 max-w-xs sm:max-w-md truncate">
-                    https://verimedia.platform/workspace
-                </div>
-            </div>
-            
-            <div class="p-4 sm:p-6 bg-slate-950/40 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="col-span-1 sm:col-span-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-                    <span class="text-[11px] sm:text-xs text-slate-400 break-all">https://breaking-shocking-rumor.xyz/secret-miracle</span>
-                    <span class="text-[10px] sm:text-xs font-bold bg-blue-600/20 text-blue-400 px-3 py-1 rounded-lg border border-blue-500/20 shrink-0">Diagnostic Complete</span>
-                </div>
-                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Trust Rating</span>
-                    <span class="text-xl sm:text-2xl font-black text-red-400 block mt-1">40%</span>
-                </div>
-                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Linguistic Index</span>
-                    <span class="text-xl sm:text-2xl font-black text-amber-400 block mt-1">High Bias</span>
-                </div>
-                <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Registry Check</span>
-                    <span class="text-xl sm:text-2xl font-black text-red-400 block mt-1">Untrusted</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-6 relative">
+                    <div class="text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-blue-600/20">1</div>
+                        <h4 class="font-bold text-white text-sm sm:text-base">Ingest Link</h4>
+                        <p class="text-xs text-slate-400 px-4 sm:px-0">User inputs structural destination URL link string into dashboard.</p>
+                    </div>
+                    <div class="text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">2</div>
+                        <h4 class="font-bold text-white text-sm sm:text-base">Linguistic Audit</h4>
+                        <p class="text-xs text-slate-400 px-4 sm:px-0">System registers punctuation, capitalizations, and clickbait tokens.</p>
+                    </div>
+                    <div class="text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-sm font-bold text-slate-300 border border-slate-700">3</div>
+                        <h4 class="font-bold text-white text-sm sm:text-base">Domain Diagnostics</h4>
+                        <p class="text-xs text-slate-400 px-4 sm:px-0">Evaluates domain security and checks names against global blacklists.</p>
+                    </div>
+                    <div class="text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center mx-auto text-sm font-bold text-white shadow-lg shadow-emerald-600/20">4</div>
+                        <h4 class="font-bold text-white text-sm sm:text-base">Generate Score</h4>
+                        <p class="text-xs text-slate-400 px-4 sm:px-0">Consolidates dynamic safety reports into a visual user matrix view.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="metrics" class="py-16 sm:py-24 bg-gradient-to-b from-[#030712] to-slate-950 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 text-center">
-            <div class="space-y-1">
-                <p class="text-4xl sm:text-5xl font-black text-white tracking-tight">95%</p>
-                <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Structural Evaluation Accuracy</p>
+        <section id="preview" class="py-20 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 border-t border-slate-900 w-full z-10">
+            <div class="text-center mb-10 sm:mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Workspace Preview</h2>
+                <p class="text-2xl sm:text-3xl font-black text-white">High Fidelity Interface Ecosystem</p>
             </div>
-            <div class="space-y-1">
-                <p class="text-4xl sm:text-5xl font-black text-blue-400 tracking-tight">&lt; 1.5s</p>
-                <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Average Processing Latency</p>
-            </div>
-            <div class="space-y-1">
-                <p class="text-4xl sm:text-5xl font-black text-cyan-400 tracking-tight">100%</p>
-                <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Client-Side Execution Autonomy</p>
-            </div>
-        </div>
-    </section>
 
-    <footer class="border-t border-slate-900 bg-[#020617] py-12 text-slate-500 text-xs">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="space-y-2 text-center md:text-left">
-                <p class="text-sm font-bold text-white">VeriMedia Framework</p>
-                <p class="text-slate-500">Advanced automated architectural design built for information integrity auditing.</p>
+            <div class="glass rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80">
+                <div class="bg-slate-900/90 px-4 py-3 flex items-center space-x-2 border-b border-slate-800/80 overflow-hidden">
+                    <div class="flex space-x-1.5 shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-red-500/40"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/40"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/40"></div>
+                    </div>
+                    <div class="bg-slate-950/80 text-[10px] sm:text-[11px] text-slate-500 px-3 py-1 rounded-md ml-4 flex-1 max-w-xs sm:max-w-md truncate">
+                        https://verimedia.platform/workspace
+                    </div>
+                </div>
+                
+                <div class="p-4 sm:p-6 bg-slate-950/40 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="col-span-1 sm:col-span-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between overflow-hidden w-full">
+                        <span class="text-[11px] sm:text-xs text-slate-400 break-all whitespace-normal pr-2">https://breaking-shocking-rumor.xyz/secret-miracle</span>
+                        <span class="text-[10px] sm:text-xs font-bold bg-blue-600/20 text-blue-400 px-3 py-1 rounded-lg border border-blue-500/20 shrink-0">Diagnostic Complete</span>
+                    </div>
+                    <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Trust Rating</span>
+                        <span class="text-xl sm:text-2xl font-black text-red-400 block mt-1">40%</span>
+                    </div>
+                    <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Linguistic Index</span>
+                        <span class="text-xl sm:text-2xl font-black text-amber-400 block mt-1">High Bias</span>
+                    </div>
+                    <div class="bg-slate-900/30 p-4 rounded-xl border border-slate-800/60">
+                        <span class="text-[10px] text-slate-500 uppercase tracking-wider block font-bold">Registry Check</span>
+                        <span class="text-xl sm:text-2xl font-black text-red-400 block mt-1">Untrusted</span>
+                    </div>
+                </div>
             </div>
-            <div class="flex space-x-6 font-medium text-slate-400">
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#workflow" class="hover:text-white transition">Workflow</a>
-                <a href="dashboard.html" class="hover:text-white transition">Workspace Console</a>
+        </section>
+
+        <section id="metrics" class="py-16 sm:py-24 bg-gradient-to-b from-[#030712] to-slate-950 border-t border-slate-900 w-full z-10">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 text-center">
+                <div class="space-y-1">
+                    <p class="text-4xl sm:text-5xl font-black text-white tracking-tight">95%</p>
+                    <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Structural Evaluation Accuracy</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-4xl sm:text-5xl font-black text-blue-400 tracking-tight">&lt; 1.5s</p>
+                    <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Average Processing Latency</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-4xl sm:text-5xl font-black text-cyan-400 tracking-tight">100%</p>
+                    <p class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-500">Client-Side Execution Autonomy</p>
+                </div>
             </div>
-            <p class="text-slate-600 text-center md:text-right">&copy; Software Engineering Expo 2026. Made with excellence.</p>
-        </div>
-    </footer>
+        </section>
+
+        <footer class="border-t border-slate-900 bg-[#020617] py-12 text-slate-500 text-xs w-full z-10">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <p class="text-sm font-bold text-white">VeriMedia Framework</p>
+                    <p class="text-slate-500">Advanced automated architectural design built for information integrity auditing.</p>
+                </div>
+                <div class="flex flex-wrap justify-center space-x-6 font-medium text-slate-400">
+                    <a href="#features" class="hover:text-white transition">Features</a>
+                    <a href="#workflow" class="hover:text-white transition">Workflow</a>
+                    <a href="dashboard.html" class="hover:text-white transition">Workspace Console</a>
+                </div>
+                <p class="text-slate-600 text-center md:text-right">&copy; Software Engineering Expo 2026. Made with excellence.</p>
+            </div>
+        </footer>
+
+    </div>
 
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
-            const isOpen = !menu.classList.contains('hidden');
-
-            if (isOpen) {
-                menu.classList.add('hidden');
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-            } else {
-                menu.classList.remove('hidden');
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-            }
-        }
-    </script>
-
-</body>
-</html>
+            const icon = document.getElementById('
