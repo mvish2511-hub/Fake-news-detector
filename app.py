@@ -1,72 +1,129 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from textblob import TextBlob
 import urllib.parse
+import requests
+from bs4 import BeautifulSoup
+import re
 
 app = Flask(__name__)
-CORS(app)  # Enables cross-origin requests so your HTML files can talk to Flask
+# Enable CORS so your local HTML frontend can make requests to this backend securely
+CORS(app)
 
-# A simple mock blacklist for Engine 1 (URL analysis)
-KNOW_FAKE_DOMAINS = ["fakenews.co", "theonion-clone.xyz", "dailyrumor.info", "baddata.net"]
+# Predefined risk vectors
+KNOW_FAKE_DOMAINS = ['fakenews.co', 'dailyrumor.info', 'onion-clone.xyz', 'rumorleak.net']
+CLICKBAIT_TOKENS = ['shocking', 'outrageous', 'secret', 'miracle', 'shocks', 'breaking', 'unbelievable', 'won\'t believe']
 
-@app.route('/api/analyze', methods=['POST'])
-def analyze_article():
-    data = request.json
-    url = data.get('url', '')
-
-    if not url:
-        return jsonify({'error': 'No URL provided'}), 400
-
-    # 🌐 ENGINE 1: URL & Domain Analysis
+def extract_article_content(url):
+    """
+    Attempts to download the web page and scrape paragraph elements to inspect real content body text.
+    """
     try:
-        parsed_url = urllib.parse.urlparse(url)
-        domain = parsed_url.netloc.lower().replace('www.', '')
+        # Pass a standard browser User-Agent header to avoid being blocked by anti-scraping firewalls
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers, timeout=5)
+        
+        if response.status_code != 200:
+            return None
+            
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Pull text inside all paragraph tags (<p>)
+        paragraphs = soup.find_all('p')
+        full_text = " ".join([p.get_text().strip() for p in paragraphs if len(p.get_text().strip()) > 20])
+        
+        return full_text if len(full_text) > 50 else None
     except Exception:
-        domain = ""
+        return None
 
-    # Simple logic checks
-    domain_verified = "Verified Source"
-    domain_score_modifier = 0
+@app.route('/api/analyze',申明=['POST'])
+@app.route('/api/analyze', methods=['POST'])
+def analyze_link():
+    data = request.get_json()
+    if not data or 'url' not in data:
+        return jsonify({'error': 'No URL parameter found in payload'}), 400
 
-    if domain in KNOW_FAKE_DOMAINS:
-        domain_verified = "Flagged Fake Source"
-        domain_score_modifier = -50
-    elif any(domain.endswith(ext) for ext in ['.xyz', '.top', '.info', '.click']):
-        domain_verified = "Untrusted Extension"
-        domain_score_modifier = -20
-
-    # 🧠 ENGINE 2: Linguistic & NLP Bias Analysis
-    # For testing, we extract text from the path, or simulate an article headline
-    headline_text = parsed_url.path.replace('-', ' ').replace('/', ' ')
-    if not headline_text.strip():
-        headline_text = "Breaking sensational news discovery shocks the community completely"
-
-    blob = TextBlob(headline_text)
+    target_url = data['url'].strip()
     
-    # TextBlob Subjectivity ranges from 0.0 (highly objective) to 1.0 (highly opinionated/biased)
-    subjectivity = blob.sentiment.subjectivity 
+    # 1. Base Default Configurations
+    trust_score = 95
+    sensationalism = "Low"
+    domain_authority = "Verified Source"
     
-    # Calculate a custom Clickbait rating based on subjectivity metrics
-    if subjectivity > 0.6:
-        sensationalism_rating = "High"
-        nlp_score_modifier = -30
-    elif subjectivity > 0.3:
-        sensationalism_rating = "Medium"
-        nlp_score_modifier = -10
+    # Isolate Domain Registry Metrics
+    try:
+        parsed_url = urllib.parse.urlparse(target_url)
+        domain = parsed_url.netloc.lower()
+        if domain.startswith('www.'):
+            domain = domain[4:]
+    except Exception:
+        return jsonify({'error': 'Invalid layout configuration of string address'}), 400
+
+    # 2. Vector A: Domain Name Audit Vetting
+    # Check explicitly flagged lists
+    if any(fake in domain for fake in KNOW_FAKE_DOMAINS):
+        trust_score -= 50
+        domain_authority = "Flagged Source System"
+    # Check suspicious unmonitored cheap TLD extensions
+    elif domain.endswith(('.xyz', '.top', '.click', '.info', '.biz', '.live')):
+        trust_score -= 25
+        domain_authority = "Untrusted Domain"
+
+    # 3. Vector B: Text Analysis (URL Path Token Verification)
+    url_path_lower = parsed_url.path.lower()
+    url_matches = 0
+    for token in CLICKBAIT_TOKENS:
+        if token in url_path_lower:
+            url_matches += 1
+
+    # 4. Vector C: Real Deep Scrape Content Verification
+    scraped_body_text = extract_article_content(target_url)
+    body_matches = 0
+    
+    if scraped_body_text:
+        body_text_lower = scraped_body_text.lower()
+        # Look for clickbait phrases inside the actual article text copy
+        for token in CLICKBAIT_TOKENS:
+            # Use regex boundaries to find whole standalone words
+            matches = re.findall(r'\b' + re.escape(token) + r'\b', body_text_lower)
+            if len(matches) > 0:
+                body_matches += 1
+                
+        # If the text body content is completely empty or incredibly short, flag as suspicious structure
+        if len(scraped_body_text) < 150:
+            trust_score -= 15
     else:
-        sensationalism_rating = "Low"
-        nlp_score_modifier = 0
+        # Penalize slightly if the site blocks connections completely or has zero text readability
+        trust_score -= 10
 
-    # Calculate overall Trust Score (Starting at 95% down to minimum 10%)
-    final_trust_score = max(10, 95 + domain_score_modifier + nlp_score_modifier)
+    # 5. Compile Cumulative Performance Math Rules
+    total_flags = url_matches + body_matches
+    
+    if total_flags >= 4:
+        sensationalism = "High Clickbait"
+        trust_score -= 40
+    elif total_flags >= 2:
+        sensationalism = "Medium Bias"
+        trust_score -= 20
+    elif total_flags == 1:
+        sensationalism = "Minor Bias"
+        trust_score -= 5
 
-    # Respond back to our HTML Dashboard page
+    # Enforce standard ceiling/floor safety constraints
+    if trust_score > 95: trust_score = 95
+    if trust_score < 10: trust_score = 10
+
+    # 6. Deliver Unified Structural Telemetry Object back to JavaScript
     return jsonify({
-        'trust_score': f"{final_trust_score}%",
-        'sensationalism': sensationalism_rating,
-        'domain_authority': domain_verified
+        'url': target_url,
+        'domain': domain,
+        'trust_score': f"{trust_score}%",
+        'sensationalism': sensationalism,
+        'domain_authority': domain_authority,
+        'scraped_characters': len(scraped_body_text) if scraped_body_text else 0
     })
 
 if __name__ == '__main__':
-    # Runs the backend server on http://127.0.0.1:5000
-    app.run(debug=True, port=5000)
+    print("🚀 VeriMedia Live Analytical Scraper Online...")
+    app.run(port=5000, debug=True)
