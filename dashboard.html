@@ -14,11 +14,21 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans relative">
 
-    <div class="flex h-screen overflow-hidden">
+    <div class="md:hidden flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-white">VeriMedia Console</span>
+        </div>
+        <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white focus:outline-none p-1">
+            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex flex-col md:flex-row md:h-screen md:overflow-hidden relative">
         
-        <div class="w-80 bg-slate-900 p-6 flex flex-col justify-between border-r border-slate-800">
+        <div id="sidebarMenu" class="fixed inset-y-0 left-0 z-40 w-72 bg-slate-900 p-6 flex flex-col justify-between border-r border-slate-800 transform -translate-x-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:w-80 pt-20 md:pt-6">
             <div>
-                <a href="index.html" class="inline-flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition group mb-8">
+                <a href="indexX.html" class="inline-flex items-center space-x-2 text-xs font-semibold text-slate-400 hover:text-white transition group mb-8">
                     <span>←</span> <span>Exit to Homepage</span>
                 </a>
                 
@@ -32,26 +42,28 @@
                     </p>
                 </div>
             </div>
-            <div class="text-[10px] text-slate-500 border-t border-slate-800 pt-4">
+            <div class="text-[10px] text-slate-500 border-t border-slate-800 pt-4 mt-8 md:mt-0">
                 <p>⚡ Native Web Architecture Protocol</p>
                 <p>🎯 Presentation Release 2026</p>
             </div>
         </div>
 
-        <div class="flex-1 p-10 overflow-y-auto">
+        <div id="sidebarOverlay" onclick="toggleSidebar()" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-30 md:hidden"></div>
+
+        <div class="flex-1 p-6 md:p-10 overflow-y-auto">
             
             <div class="mb-8">
-                <h2 class="text-2xl font-black text-white mb-1">Source Authenticator Studio</h2>
+                <h2 class="text-xl md:text-2xl font-black text-white mb-1">Source Authenticator Studio</h2>
                 <p class="text-slate-400 text-xs">Run real-time rule engine analytics against news domain string inputs.</p>
             </div>
 
-            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-xl mb-8">
+            <div class="bg-slate-900 p-4 md:p-6 rounded-2xl border border-slate-800 shadow-xl mb-8">
                 <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Target Article Address</label>
-                <div class="flex gap-3">
+                <div class="flex flex-col sm:flex-row gap-3">
                     <input type="url" id="urlInput" placeholder="Paste target news article URL link here..." 
                         class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/80 focus:ring-4 focus:ring-blue-500/5 transition-all">
                     <button onclick="runAppDiagnostics()" 
-                        class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-lg transition active:scale-95 whitespace-nowrap">
+                        class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-lg transition active:scale-95 whitespace-nowrap w-full sm:w-auto">
                         Scan Link
                     </button>
                 </div>
@@ -102,6 +114,27 @@
     </div>
 
     <script>
+        // Sidebar Toggle Utility for Responsive Mobile Navigation Control
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebarMenu');
+            const overlay = document.getElementById('sidebarOverlay');
+            const menuIcon = document.getElementById('menuIcon');
+            
+            const isOpen = sidebar.classList.contains('translate-x-0');
+            
+            if (isOpen) {
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        }
+
         function runAppDiagnostics() {
             const urlInputString = document.getElementById('urlInput').value;
             if(!urlInputString) {
@@ -113,7 +146,6 @@
             document.getElementById('resultsDashboard').classList.add('hidden');
             document.getElementById('loadingState').classList.remove('hidden');
 
-            // Simulated step-by-step diagnostic trace logs (Immensely increases perceived tech depth)
             logMsg.innerText = "🔍 Connecting to address domain metrics...";
             
             setTimeout(() => { logMsg.innerText = "🧠 Analyzing text for structural clickbait flags..."; }, 600);
@@ -126,7 +158,6 @@
 
                 const parsedCleanUrl = urlInputString.toLowerCase();
 
-                // Validation Rule Condition Checks
                 if (parsedCleanUrl.includes('.xyz') || parsedCleanUrl.includes('.top') || parsedCleanUrl.includes('.info') || parsedCleanUrl.includes('.click')) {
                     ratingIndex -= 25;
                     serverVerifiedStatus = "Untrusted Domain";
@@ -149,7 +180,6 @@
 
                 if (ratingIndex < 10) ratingIndex = 10;
 
-                // 3 & 4. SEMANTIC COLOR CODING & PROGRESS FILL ASSIGNMENTS
                 const trustCard = document.getElementById('cardTrustContainer');
                 const sensCard = document.getElementById('cardSensationalContainer');
                 const domCard = document.getElementById('cardDomainContainer');
@@ -158,40 +188,32 @@
                 const sBadge = document.getElementById('uiSensationalBadge');
                 const dBadge = document.getElementById('uiDomainBadge');
 
-                // Clear layout configurations dynamically using unified logic pipelines
                 if (ratingIndex >= 80) {
-                    // Safe State Configuration (Green Theme Mapping)
                     trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-emerald-500 shadow-md";
                     fillBar.className = "h-full rounded-full transition-all duration-700 bg-emerald-500";
                     sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
                 } else if (ratingIndex >= 50) {
-                    // Warning State Configuration (Amber Theme Mapping)
                     trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-amber-500 shadow-md";
                     fillBar.className = "h-full rounded-full transition-all duration-700 bg-amber-500";
                     sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-500/10 text-amber-400 border border-amber-500/20";
                 } else {
-                    // Danger State Configuration (Red Theme Mapping)
                     trustCard.className = "bg-slate-900 p-6 rounded-2xl border-l-4 border-red-500 shadow-md";
                     fillBar.className = "h-full rounded-full transition-all duration-700 bg-red-500";
                     sBadge.className = "inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-red-500/10 text-red-400 border border-red-500/20";
                 }
 
-                // Additional card status colors
                 sensCard.className = `bg-slate-900 p-6 rounded-2xl border-l-4 ${headlineBias.includes('High') ? 'border-red-500' : headlineBias.includes('Medium') ? 'border-amber-500' : 'border-emerald-500'}`;
                 domCard.className = `bg-slate-900 p-6 rounded-2xl border-l-4 ${serverVerifiedStatus.includes('Verified') ? 'border-blue-500' : 'border-red-500'}`;
                 
                 dBadge.className = `inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase ${serverVerifiedStatus.includes('Verified') ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`;
 
-                // Append Data strings to DOM targets
                 document.getElementById('uiTrustText').innerText = ratingIndex + "%";
                 sBadge.innerText = headlineBias;
                 dBadge.innerText = serverVerifiedStatus;
 
-                // Toggle visibility states
                 document.getElementById('loadingState').classList.add('hidden');
                 document.getElementById('resultsDashboard').classList.remove('hidden');
 
-                // Trigger smooth loading calculation transition animation path
                 setTimeout(() => { fillBar.style.width = ratingIndex + "%"; }, 50);
 
             }, 1800); 
